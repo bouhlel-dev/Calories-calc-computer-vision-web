@@ -1,0 +1,490 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: #1a1a1a;
+    color: white;
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+.app-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #1a1a1a;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    padding-top: 10px;
+}
+
+.greeting {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.settings-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.settings-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #ff6b9d;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 0 20px;
+    overflow-y: auto;
+    padding-bottom: 100px;
+}
+
+/* Calorie Progress Section */
+.calorie-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.progress-circle {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.progress-ring {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-svg {
+    transform: rotate(-90deg);
+}
+
+.progress-bg {
+    fill: none;
+    stroke: #333;
+    stroke-width: 8;
+}
+
+.progress-fill {
+    fill: none;
+    stroke: #ff6b9d;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 502.4;
+    stroke-dashoffset: 502.4;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.progress-content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.flame-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.calorie-count {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+}
+
+.calories-left {
+    font-size: 1rem;
+    color: #ccc;
+    text-align: center;
+}
+
+/* Macronutrients Card */
+.macro-card {
+    background: #2a2a2a;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.macro-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.macro-item:last-child {
+    margin-bottom: 0;
+}
+
+.macro-label {
+    width: 80px;
+    font-weight: 600;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.macro-bar {
+    flex: 1;
+    height: 8px;
+    background: #333;
+    border-radius: 4px;
+    margin: 0 15px;
+    overflow: hidden;
+}
+
+.macro-progress {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.protein-progress {
+    background: #4CAF50;
+}
+
+.carb-progress {
+    background: #ff6b9d;
+}
+
+.fat-progress {
+    background: #FFD700;
+}
+
+.macro-count {
+    width: 80px;
+    text-align: right;
+    font-size: 0.8rem;
+    color: #ccc;
+}
+
+/* Meals Section */
+.meals-section {
+    margin-bottom: 20px;
+}
+
+.meals-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.meals-header h2 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: white;
+}
+
+
+
+.meals-list {
+    min-height: 100px;
+}
+
+.empty-meals {
+    text-align: center;
+    color: #666;
+    padding: 40px 20px;
+}
+
+.empty-meals p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+/* Meal Items */
+.meal-item {
+    display: flex;
+    align-items: center;
+    background: #2a2a2a;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 10px;
+    gap: 15px;
+}
+
+.meal-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.meal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.meal-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.meal-foods {
+    font-weight: 600;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.meal-calories {
+    color: #ff6b9d;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.meal-time {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+/* Floating Add Button */
+.floating-add-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100;
+}
+
+.add-btn {
+    background: #ff6b9d;
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
+}
+
+.nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background: #2a2a2a;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    z-index: 1001;
+}
+
+.modal-header {
+    padding: 20px 24px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.modal-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #fee2e2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #dc2626;
+}
+
+.modal-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+}
+
+.modal-body {
+    padding: 16px 24px;
+}
+
+.modal-message {
+    color: #ccc;
+    line-height: 1.5;
+}
+
+.modal-footer {
+    padding: 16px 24px 24px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-btn {
+    background: #ff6b9d;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.modal-btn:hover {
+    background: #e55a8a;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .header {
+        padding: 15px;
+    }
+    
+    .greeting {
+        font-size: 2rem;
+    }
+    
+    .main-content {
+        padding: 0 15px;
+    }
+    
+    .macro-card {
+        padding: 15px;
+    }
+    
+    .macro-label {
+        width: 70px;
+        font-size: 0.8rem;
+    }
+    
+    .macro-count {
+        width: 70px;
+        font-size: 0.75rem;
+    }
+    
+    .progress-svg {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .progress-bg,
+    .progress-fill {
+        cx: 90;
+        cy: 90;
+        r: 70;
+    }
+    
+    .calorie-count {
+        font-size: 1rem;
+    }
+}
+
+/* Landscape orientation */
+@media (max-width: 768px) and (orientation: landscape) {
+    .main-content {
+        padding-bottom: 80px;
+    }
+    
+    .bottom-nav {
+        padding: 5px 0;
+    }
+    
+    .nav-item {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .add-btn {
+        transform: translateY(-5px);
+    }
+}

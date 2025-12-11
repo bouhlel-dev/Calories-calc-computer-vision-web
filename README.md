@@ -122,8 +122,3 @@ For production deployment, configure these in your hosting platform:
 - Supabase URL and anon key in `src/services/supabase.js`
 - Update Supabase **Site URL** and **Redirect URLs** to your production domain
 
-## License
-
-ISC
-
-ISC
